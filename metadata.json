@@ -1,0 +1,6 @@
+{
+  "name": "Duolingo Clone - Learn Spanish",
+  "description": "Fun, gamified Spanish language learning with interactive lessons, word bank exercises, audio pronunciation, streaks, hearts, and gems shop.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

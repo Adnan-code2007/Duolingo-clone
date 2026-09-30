@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Provide a setter for window.fetch in iframe / sandbox environments
+      // where Window.prototype.fetch only has a getter.
+      (function() {
+        try {
+          let currentFetch = window.fetch ? window.fetch.bind(window) : null;
+          Object.defineProperty(window, 'fetch', {
+            get() {
+              return currentFetch;
+            },
+            set(newFetch) {
+              activeFetch = newFetch;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          try {
+            Object.defineProperty(Window.prototype, 'fetch', {
+              writable: true,
+              configurable: true
+            });
+          } catch (_) {}
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duolingo Clone - Learn Spanish & Hindi</title>
+    <meta name="description" content="Fun, gamified language learning for Spanish and Hindi with interactive lessons, word bank exercises, audio pronunciation, streaks, hearts, and gems shop." />
+    <meta property="og:title" content="Duolingo Clone - Learn Spanish & Hindi" />
+    <meta property="og:description" content="Fun, gamified language learning for Spanish and Hindi with interactive lessons, word bank exercises, audio pronunciation, streaks, hearts, and gems shop." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
