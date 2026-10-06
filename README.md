@@ -1,1 +1,1 @@
-clone of duolingo
+duolingo clone
